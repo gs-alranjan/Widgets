@@ -3,11 +3,11 @@
     {
       "version": "1.0.0",
       "title": "Welcome Banner",
-      "type": "welcome_banner",
+      "type": "gs_alranjan_welcome_banner",
       "description": "A customizable welcome banner widget with heading, message, CTA button, and theming options.",
       "category": "engagement",
-      "containers": ["Full width"],
-      "imageSrc": "https://via.placeholder.com/300x200?text=Welcome+Banner",
+      "containers": ["Full width", "Left container", "Sidebar"],
+      "imageName": "banner",
       "widgetsLibrary": true,
       "settings": {
         "configurable": true,
