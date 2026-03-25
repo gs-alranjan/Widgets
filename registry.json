@@ -1,0 +1,130 @@
+{
+  "widgets": [
+    {
+      "version": "1.0.0",
+      "title": "Welcome Banner",
+      "type": "welcome_banner",
+      "description": "A customizable welcome banner widget with heading, message, CTA button, and theming options.",
+      "category": "engagement",
+      "containers": ["Full width"],
+      "imageSrc": "https://via.placeholder.com/300x200?text=Welcome+Banner",
+      "widgetsLibrary": true,
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": true
+      },
+      "content": {
+        "endpoint": "https://your-api.example.com/widgets/welcome-banner",
+        "method": "GET",
+        "requiresAuthentication": false,
+        "cacheStrategy": "ttl",
+        "cacheTtlSeconds": 600
+      },
+      "configuration": {
+        "properties": [
+          {
+            "name": "heading",
+            "label": "Heading",
+            "type": "text",
+            "description": "Main heading text displayed on the banner",
+            "defaultValue": "Welcome to our Community!",
+            "rules": {
+              "required": true,
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "message",
+            "label": "Message",
+            "type": "text",
+            "description": "Subtext displayed below the heading",
+            "defaultValue": "Join the conversation, ask questions, and share your knowledge.",
+            "rules": {
+              "required": false,
+              "maxLength": 250
+            }
+          },
+          {
+            "name": "ctaLabel",
+            "label": "CTA Button Label",
+            "type": "text",
+            "description": "Text for the call-to-action button",
+            "defaultValue": "Get Started",
+            "rules": {
+              "required": false,
+              "maxLength": 30
+            }
+          },
+          {
+            "name": "ctaUrl",
+            "label": "CTA Button URL",
+            "type": "text",
+            "description": "Link destination for the CTA button",
+            "defaultValue": "/getting-started",
+            "rules": {
+              "required": false
+            }
+          },
+          {
+            "name": "backgroundColor",
+            "label": "Background Color",
+            "type": "color",
+            "description": "Banner background color",
+            "defaultValue": "#4A90D9",
+            "rules": {
+              "required": false
+            }
+          },
+          {
+            "name": "textColor",
+            "label": "Text Color",
+            "type": "color",
+            "description": "Color for heading and message text",
+            "defaultValue": "#FFFFFF",
+            "rules": {
+              "required": false
+            }
+          },
+          {
+            "name": "layout",
+            "label": "Layout Style",
+            "type": "select",
+            "description": "Choose the banner layout",
+            "defaultValue": "centered",
+            "options": [
+              { "value": "centered", "label": "Centered" },
+              { "value": "left-aligned", "label": "Left Aligned" },
+              { "value": "split", "label": "Split (text left, image right)" }
+            ],
+            "rules": {
+              "required": true
+            }
+          },
+          {
+            "name": "showDismiss",
+            "label": "Show Dismiss Button",
+            "type": "boolean",
+            "description": "Allow users to dismiss the banner",
+            "defaultValue": true,
+            "rules": {
+              "required": false
+            }
+          }
+        ]
+      },
+      "defaultConfig": {
+        "heading": "Welcome to our Community!",
+        "message": "Join the conversation, ask questions, and share your knowledge.",
+        "ctaLabel": "Get Started",
+        "ctaUrl": "/getting-started",
+        "backgroundColor": "#4A90D9",
+        "textColor": "#FFFFFF",
+        "layout": "centered",
+        "showDismiss": true
+      }
+    }
+  ]
+}
