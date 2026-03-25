@@ -6,7 +6,7 @@
       "type": "gs_alranjan_welcome_banner",
       "description": "A customizable welcome banner widget with heading, message, CTA button, and theming options.",
       "category": "engagement",
-      "containers": ["Full width", "Left container", "Sidebar"],
+      "containers": ["Full width"],
       "imageName": "banner",
       "widgetsLibrary": true,
       "settings": {
