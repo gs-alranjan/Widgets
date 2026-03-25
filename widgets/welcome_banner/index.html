@@ -1,21 +1,16 @@
-<!-- Welcome Banner Widget -->
 <style>
-  :host {
-    display: block;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
-  }
-
   .banner {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 2rem 2.5rem;
-    background-color: var(--banner-bg, #4A90D9);
-    color: var(--banner-text, #FFFFFF);
+    background-color: {{ backgroundColor }};
+    color: {{ textColor }};
     border-radius: 8px;
     position: relative;
     gap: 1.5rem;
+    font-family: system-ui, -apple-system, sans-serif;
   }
 
   .banner--left-aligned {
@@ -32,10 +27,6 @@
 
   .banner--split .banner__content {
     text-align: left;
-  }
-
-  .banner--hidden {
-    display: none;
   }
 
   .banner__content {
@@ -62,8 +53,8 @@
   .banner__cta {
     display: inline-block;
     padding: 0.625rem 1.5rem;
-    background-color: var(--banner-text, #FFFFFF);
-    color: var(--banner-bg, #4A90D9);
+    background-color: {{ textColor }};
+    color: {{ backgroundColor }};
     text-decoration: none;
     border-radius: 6px;
     font-weight: 600;
@@ -77,98 +68,22 @@
     opacity: 0.85;
   }
 
-  .banner__dismiss {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 1.25rem;
-    cursor: pointer;
-    opacity: 0.7;
-    padding: 0.25rem;
-    line-height: 1;
-    transition: opacity 0.2s ease;
-  }
+  @media (max-width: 768px) {
+    .banner {
+      padding: 1.5rem;
+      flex-direction: column !important;
+    }
 
-  .banner__dismiss:hover {
-    opacity: 1;
+    .banner__content {
+      text-align: center !important;
+    }
   }
 </style>
 
-<div class="banner" role="banner" id="welcome-banner">
-  <button class="banner__dismiss" aria-label="Dismiss banner" id="dismiss-btn">&times;</button>
+<div class="banner banner--{{ layout }}">
   <div class="banner__content">
-    <h2 class="banner__heading" id="heading">Welcome to our Community!</h2>
-    <p class="banner__message" id="message">Join the conversation, ask questions, and share your knowledge.</p>
-    <a class="banner__cta" id="cta" href="/getting-started">Get Started</a>
+    <h2 class="banner__heading">{{ heading }}</h2>
+    <p class="banner__message">{{ message }}</p>
+    <a class="banner__cta" href="{{ ctaUrl }}">{{ ctaLabel }}</a>
   </div>
 </div>
-
-<script>
-  (function () {
-    var sdk = getCurrentWidgetSDK();
-
-    sdk.whenReady().then(function () {
-      var props = sdk.getProps();
-      var banner = sdk.$('#welcome-banner');
-      var heading = sdk.$('#heading');
-      var message = sdk.$('#message');
-      var cta = sdk.$('#cta');
-      var dismissBtn = sdk.$('#dismiss-btn');
-
-      function applyProps(p) {
-        // Colors
-        banner.style.backgroundColor = p.backgroundColor || '#4A90D9';
-        banner.style.color = p.textColor || '#FFFFFF';
-        cta.style.backgroundColor = p.textColor || '#FFFFFF';
-        cta.style.color = p.backgroundColor || '#4A90D9';
-
-        // Content
-        heading.textContent = p.heading || 'Welcome to our Community!';
-        message.textContent = p.message || '';
-        message.style.display = p.message ? '' : 'none';
-
-        if (p.ctaLabel) {
-          cta.textContent = p.ctaLabel;
-          cta.href = p.ctaUrl || '#';
-          cta.style.display = '';
-        } else {
-          cta.style.display = 'none';
-        }
-
-        // Layout
-        banner.className = 'banner';
-        if (p.layout === 'left-aligned') banner.classList.add('banner--left-aligned');
-        if (p.layout === 'split') banner.classList.add('banner--split');
-
-        // Dismiss button
-        dismissBtn.style.display = p.showDismiss === false ? 'none' : '';
-      }
-
-      applyProps(props);
-
-      // Dismiss
-      dismissBtn.addEventListener('click', function () {
-        banner.classList.add('banner--hidden');
-        sdk.emit('banner:dismissed', { widget: 'welcome_banner' });
-      });
-
-      // CTA tracking
-      cta.addEventListener('click', function () {
-        sdk.emit('banner:cta-clicked', { url: cta.href });
-      });
-
-      // Live config updates
-      sdk.on('propsChanged', function (newProps) {
-        applyProps(newProps);
-      });
-
-      // Cleanup
-      sdk.on('destroy', function () {
-        sdk.getContainer().innerHTML = '';
-      });
-    });
-  })();
-</script>
