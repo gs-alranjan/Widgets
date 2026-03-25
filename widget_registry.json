@@ -1,24 +1,7 @@
 {
   "widgets": [
     {
-      "version": "1.0.0",
-      "title": "Welcome Banner",
-      "type": "gs_alranjan_welcome_banner",
-      "description": "A customizable welcome banner widget with heading, message, CTA button, and theming options",
       "category": "Custom",
-      "containers": ["Full width"],
-      "widgetsLibrary": true,
-      "settings": {
-        "configurable": true,
-        "editable": true,
-        "removable": true,
-        "shared": false,
-        "movable": false
-      },
-      "source": {
-        "path": "widgets/welcome_banner",
-        "entry": "index.html"
-      },
       "configuration": {
         "properties": [
           {
@@ -78,13 +61,25 @@
             "type": "select",
             "defaultValue": "centered",
             "options": [
-              { "value": "centered", "label": "Centered" },
-              { "value": "left-aligned", "label": "Left Aligned" },
-              { "value": "split", "label": "Split" }
+              {
+                "value": "centered",
+                "label": "Centered"
+              },
+              {
+                "value": "left-aligned",
+                "label": "Left Aligned"
+              },
+              {
+                "value": "split",
+                "label": "Split"
+              }
             ]
           }
         ]
       },
+      "containers": [
+        "Full width"
+      ],
       "defaultConfig": {
         "heading": "Welcome to our Community!",
         "message": "Join the conversation, ask questions, and share your knowledge.",
@@ -93,7 +88,24 @@
         "backgroundColor": "#4A90D9",
         "textColor": "#FFFFFF",
         "layout": "centered"
-      }
+      },
+      "description": "A customizable welcome banner widget with heading, message, CTA button, and theming options",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Welcome Banner",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "welcome_banner",
+      "source": {
+        "path": "widgets/welcome_banner/dist",
+        "entry": "content.html"
+      },
+      "imageSrc": "widgets/welcome_banner/thumbnail.png"
     }
   ]
 }
