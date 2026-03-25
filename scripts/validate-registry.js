@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const schemaPath = resolve(__dirname, '../schema/widget-registry.schema.json');
-const registryPath = resolve(__dirname, '../widget-registry.json');
+const registryPath = resolve(__dirname, '../widget_registry.json');
 
 const schema = JSON.parse(readFileSync(schemaPath, 'utf-8'));
 const registry = JSON.parse(readFileSync(registryPath, 'utf-8'));

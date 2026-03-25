@@ -6,7 +6,7 @@ Custom widgets for the InSided Community platform, built using the Widget SDK an
 
 ```
 Widgets/
-├── widget-registry.json                    # Widget Registry JSON (the source of truth)
+├── widget_registry.json                    # Widget Registry JSON (the source of truth)
 ├── schema/
 │   └── widget-registry.schema.json  # Validation schema (from community-backend)
 ├── src/
@@ -35,21 +35,21 @@ npm install
 |------------------|--------------------------------------------------|
 | `npm run build`  | Bundle widget source to ESM in `dist/`           |
 | `npm run dev`    | Watch mode — rebuilds on file changes            |
-| `npm run validate` | Validate `widget-registry.json` against the JSON schema |
+| `npm run validate` | Validate `widget_registry.json` against the JSON schema |
 | `npm run serve`  | Serve `dist/` locally on port 8080 with CORS     |
 
 ## How to Register in Community
 
 ### 1. Host the registry and widget bundle
 
-Publish `widget-registry.json` and `dist/index.js` to a publicly accessible URL. For example:
+Publish `widget_registry.json` and `dist/index.js` to a publicly accessible URL. For example:
 
 ```
-https://your-cdn.example.com/widgets/widget-registry.json
+https://your-cdn.example.com/widgets/widget_registry.json
 https://your-cdn.example.com/widgets/dist/index.js
 ```
 
-Update the `content.endpoint` in `widget-registry.json` to point to your actual API endpoint.
+Update the `content.endpoint` in `widget_registry.json` to point to your actual API endpoint.
 
 ### 2. Register as a Customer Widget
 
@@ -57,7 +57,7 @@ Update the `content.endpoint` in `widget-registry.json` to point to your actual 
 2. Navigate to the **Widget Registry** section (requires community manager role + feature flag)
 3. Add a new registry with:
    - **Registry alias**: `my-custom-widgets` (kebab-case)
-   - **Registry URL**: `https://your-cdn.example.com/widgets/widget-registry.json`
+   - **Registry URL**: `https://your-cdn.example.com/widgets/widget_registry.json`
 4. The registry starts in **draft** status — activate it to make widgets appear in the Widget Library
 
 ### 3. Register as a Platform Widget (CC-managed)
@@ -76,7 +76,7 @@ Drag it into any allowed container (`Full width` for this widget) and configure 
 
 1. Create a new folder under `src/widgets/your-widget-name/`
 2. Implement the `init(sdk)` entry point following the Widget SDK contract
-3. Add the widget definition to `widget-registry.json` under the `widgets` array
+3. Add the widget definition to `widget_registry.json` under the `widgets` array
 4. Add an esbuild entry in `package.json` scripts for the new widget
 5. Run `npm run validate` to ensure the registry is valid
 6. Build and deploy
